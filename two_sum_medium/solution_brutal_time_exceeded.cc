@@ -36,5 +36,7 @@ int main(void) {
 	Solution sol;
 	vec_an = sol.twoSum(vec_t, 12);
 
+	std::cout << vec_an[0] << " and " << vec_an[1] << std::endl;
+ 
 	return 0;
 }
