@@ -31,6 +31,9 @@ int main(void) {
 	std::vector<int> vec_t = {1, 5, 3, 1, 5, 6, 7, 11, 11, 6, 3};
 	std::cout << s1.SingleNumber(vec_t) << std::endl;
 
+	for (int i = 0; i < 10000; ++i) {
+	}
+
 	std::cout << std::endl;
 	for (auto &r : vec_t) {
 		std::cout << r << " ";

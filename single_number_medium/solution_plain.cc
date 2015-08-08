@@ -8,7 +8,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+#include <cstdlib>
+#include <ctime>
 
 class Solution {
 	public:
@@ -40,7 +41,6 @@ class Solution {
 		}
 
 		void QuickSort(std::vector<int> &vec_int, int left, int right) {
-			srand((unsigned) time(NULL));
 			if (left < right) {
 				int partion = Partiation(vec_int, left, right);
 				QuickSort(vec_int, left, partion - 1);
@@ -49,12 +49,18 @@ class Solution {
 		}
 
 		int SingleNumber(std::vector<int>& nums) {
+			if (nums.size() <= 1) {
+				return nums.front();
+			}
+			srand(time(NULL));
 			QuickSort(nums, 0, nums.size() - 1);
 
-			for (std::size_t single_nums = 0; single_nums < nums.size() - 1; single_nums += 2) {
-				int single_num = nums[single_nums];
-				if (single_num != nums[single_nums + 1]) {
-					return single_num;
+			for (std::size_t ptr = 0; ptr < nums.size(); ptr += 2) {
+				//int single_num = nums[ptr];
+				if (ptr == nums.size()) {
+					return nums[ptr];
+				} else if (nums[ptr] != nums[ptr+1]) {
+					return nums[ptr];
 				}
 			}
 
@@ -63,13 +69,43 @@ class Solution {
 };
 
 int main(void) {
+	srand(time(NULL));
 	Solution s1;
-	std::vector<int> vec_t = {1, 5, 3, 1, 5, 6, 7, 11, 11, 6, 3};
-	std::cout << s1.SingleNumber(vec_t) << std::endl;
+	std::vector<int> vec_t;
+
+	/*
+	for (int i = 0; i < 9999; ++i) {
+		int num = rand();
+		vec_t.push_back(num);
+		vec_t.push_back(num);
+	}
+
+	int single_num = rand();
+	vec_t.push_back(single_num);
+	*/
+
+	for (int i = 0; i <= 9999; ++i) {
+		vec_t.push_back(i);
+	}
+	for (int i = 0; i <= 9999; ++i) {
+		vec_t.push_back(i);
+	}
+	vec_t.push_back(10000);
+
+	int count = 0;
+	int single_num = s1.SingleNumber(vec_t);
+	
+	for (auto &r : vec_t) {
+		if (count % 10 == 0) {
+			std::cout << std::endl;
+		}
+		std::cout << r << " ";
+		++count;
+	}
 
 	std::cout << std::endl;
-	for (auto &r : vec_t) {
-		std::cout << r << " ";
-	}
+	std::cout << "single num is " << single_num << std::endl;
 	std::cout << std::endl;
+
+	//std::cout << std::endl;
 }
