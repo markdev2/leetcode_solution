@@ -7,3 +7,7 @@ leetcode_solution
 
 #20150811
 - complete delete_listnode code, wait for test
+
+#20150817
+- complete Add_digits, for 3 way to solve
+- complete delete node in linked list
