@@ -11,3 +11,6 @@ leetcode_solution
 #20150817
 - complete Add_digits, for 3 way to solve
 - complete delete node in linked list
+
+#20150819
+- ready to optimal solution for two_sum
