@@ -14,3 +14,6 @@ leetcode_solution
 
 #20150819
 - ready to optimal solution for two_sum
+
+#20150820
+- modify single_num correct

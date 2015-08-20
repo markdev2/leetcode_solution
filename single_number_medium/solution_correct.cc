@@ -11,12 +11,14 @@
 #include <ctime>
 class Solution {
 	public:
-		void Swap(int &a, int &b) {
-			int temp;
+		template <class T>
+		void Swap(T &a, T &b) {
+			T temp;
 			temp = a;
 			a = b;
 			b = temp;
 		}
+
 		int Partiation(std::vector<int> &vec_int, int left, int right) {
 			int provt = rand() % (right - left) + left;
 			Swap(vec_int[right], vec_int[provt]);
@@ -24,37 +26,35 @@ class Solution {
 			while (left < right) {
 				while (left < right && provt > vec_int[left]) ++left;
 				while (left < right && provt < vec_int[right]) --right;
-				if (left < right) {
+				if (left < right)
 					Swap(vec_int[left], vec_int[right]);
-					if (vec_int[left] == provt && vec_int[right] == provt) {
-						--right;
-					}
-				}
 			}
-			vec_int[left] = provt;
 			return right;
 		}
+
 		void QuickSort(std::vector<int> &vec_int, int left, int right) {
+			srand(time(NULL));
 			if (left < right) {
 				int partion = Partiation(vec_int, left, right);
 				QuickSort(vec_int, left, partion - 1);
 				QuickSort(vec_int, partion + 1, right);
 			}
 		}
+
 		int SingleNumber(std::vector<int>& nums) {
 			if (nums.size() <= 1) {
 				return nums.front();
 			}
-			srand(time(NULL));
+
 			QuickSort(nums, 0, nums.size() - 1);
 			for (std::size_t ptr = 0; ptr < nums.size(); ptr += 2) {
-				//int single_num = nums[ptr];
 				if (ptr == nums.size()) {
 					return nums[ptr];
 				} else if (nums[ptr] != nums[ptr+1]) {
 					return nums[ptr];
 				}
 			}
+
 			return 0;
 		}
 };
