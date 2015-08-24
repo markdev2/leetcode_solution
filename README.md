@@ -24,3 +24,4 @@ leetcode_solution
 
 #20150825
 - create add_two_numbers_medium, test error
+- modify add_two_numbers_medium
