@@ -17,3 +17,6 @@ leetcode_solution
 
 #20150820
 - modify single_num correct
+
+#20150824
+- create maximum_depth_of_binary_tree, and finish if by using recurise
