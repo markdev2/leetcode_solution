@@ -21,3 +21,6 @@ leetcode_solution
 #20150824
 - create maximum_depth_of_binary_tree, and finish if by using recurise
 - create add_two_numbers_medium, and ready to hack
+
+#20150825
+- create add_two_numbers_medium, test error
