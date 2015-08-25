@@ -31,3 +31,4 @@ leetcode_solution
 
 #20150830
 - create reverse_linked_list_easy, and finish it by no using extra memony
+- create two_sum_optimal by using hash_table that made by myself, decrese run-time
