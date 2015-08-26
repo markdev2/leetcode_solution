@@ -54,42 +54,42 @@ class Solution {
 						overload = false;
 					}
 				} else if (overload) {
-					ptr->val += val;
-					if (ptr->val / 10 != 0) {
+					val += ptr->val;
+					ptr->val = val % 10;
+					if (val / 10 != 0) {
 						ListNode *tmp = new ListNode(1);
 						ptr->next = tmp;
+						ptr = ptr->next;
 					} else { 
 						overload = false;
 					}
-					ptr->val = ptr->val % 10;
-					ptr = ptr->next;
 				} else {
 					if (val / 10 != 0) {
+						DEBUG
 						ptr->next = new ListNode(val % 10);
 						ptr->next->next = new ListNode(1);
-						ptr = ptr->next;
+						ptr = ptr->next->next;
 						overload = true;
 					} else {
 						ptr->next = new ListNode(val);
 						ptr = ptr->next;
 					}
 				}
-				//ptr = ptr->next;
 				l1 = l1->next;
 				l2 = l2->next;
 			}
 
 			while (l1) {
 				if (overload) {
-					ptr->val += l1->val;
-					if (ptr->val / 10 != 0) {
+					int val = ptr->val + l1->val;
+					ptr->val = val % 10;
+					if (val / 10 != 0) {
 						ListNode *tmp = new ListNode(1);
 						ptr->next = tmp;
+						ptr = ptr->next;
 					} else { 
 						overload = false;
 					}
-					ptr->val = ptr->val % 10;
-					ptr = ptr->next;
 				} else {
 					ptr->next = new ListNode(l1->val);
 					ptr = ptr->next;
@@ -99,21 +99,22 @@ class Solution {
 
 			while (l2) {
 				if (overload) {
-					ptr->val += l2->val;
-					if (ptr->val / 10 != 0) {
+					int val = ptr->val + l2->val;
+					ptr->val = val % 10;
+					if (val / 10 != 0) {
 						ListNode *tmp = new ListNode(1);
 						ptr->next = tmp;
+						ptr = ptr->next;
 					} else { 
 						overload = false;
 					}
-					ptr->val = ptr->val % 10;
-					ptr = ptr->next;
 				} else {
 					ptr->next = new ListNode(l2->val);
 					ptr = ptr->next;
 				}
 				l2 = l2->next;
 			}
+
 			return head->next;
 		}
 };
@@ -125,17 +126,20 @@ int main(void) {
 	ListNode *l2 = NULL;
 	ListNode *l2_ptr = NULL;
 	ListNode *l3 = NULL;
-	l1 = new ListNode(1);
-	l1->next = new ListNode(9);
-	l1->next->next = new ListNode(5);
-	l1->next->next->next = new ListNode(8);
-	l1->next->next->next->next = new ListNode(2);
-	l1->next->next->next->next->next = new ListNode(9);
-	l2 = new ListNode(9);
-	l2->next = new ListNode(9);
-	l2->next->next = new ListNode(4);
-	l2->next->next->next = new ListNode(7);
-	l2->next->next->next->next = new ListNode(0);
+	l1 = new ListNode(0);
+	l1->next = new ListNode(0);
+	l1->next->next = new ListNode(1);
+	l1->next->next->next = new ListNode(9);
+	l1->next->next->next->next = new ListNode(0);
+	l1->next->next->next->next->next = new ListNode(1);
+	l1->next->next->next->next->next->next = new ListNode(6);
+	l2 = new ListNode(8);
+	l2->next = new ListNode(6);
+	l2->next->next = new ListNode(2);
+	l2->next->next->next = new ListNode(5);
+	l2->next->next->next->next = new ListNode(8);
+	l2->next->next->next->next->next = new ListNode(2);
+	l2->next->next->next->next->next->next = new ListNode(6);
 	l1_ptr = l1;
 	l2_ptr = l2;
 	std::cout << "l1: " << std::endl;
