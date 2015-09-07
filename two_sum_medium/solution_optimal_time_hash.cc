@@ -8,13 +8,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cmath>
 
 #define DEBUG std::cout << "*****************" << std::endl;
 
 //问题描述：
 //1. 不一定有序
 //2. 可能有相同的值
-//3. 真捉急
+//3. 十分捉急
 
 class Solution {
 	public:
@@ -26,7 +27,7 @@ class Solution {
 		};
 
 		std::size_t makeHash(int num, int hash_seed) {
-			return num % hash_seed;
+			return std::abs(num % hash_seed);
 		}
 
 		std::vector<int> twoSum(std::vector<int>& nums, int target) {
@@ -61,8 +62,13 @@ class Solution {
 };
 
 int main(void) {
-	std::vector<int> vec_t = {-3, 4, 3, 90};
+	std::vector<int> vec_t;
 	std::vector<int> vec_an;
+
+	vec_t.push_back(-3);
+	vec_t.push_back(4);
+	vec_t.push_back(3);
+	vec_t.push_back(90);
 
 	Solution sol;
 	vec_an = sol.twoSum(vec_t, 0);

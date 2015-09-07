@@ -35,3 +35,4 @@ leetcode_solution
 
 #20150907
 - create same_tree_easy, and finish it by using recursive approach, and ready using non-recuresive approach
+- fix two_sum by using my own hash_function
