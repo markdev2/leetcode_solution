@@ -18,16 +18,16 @@ class Solution {
 
 			for (int i = 0; i <= num; ++i)
 			{
-				if (i = 0)
+				if (i == 0)
 				{
 					result.push_back(0);
 				}
-				else if (i = 1)
+				else if (i == 1)
 				{
 					result.push_back(1);
 				}
 
-				result.push_back(result[i >> 1] + i & 1);
+				result.push_back(result[i >> 1] + (i & 1));
 			}
 
 			return result;
