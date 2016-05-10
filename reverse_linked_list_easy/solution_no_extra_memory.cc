@@ -32,20 +32,16 @@ public:
 				return head;
 			}
 
-			ListNode *head_ptr = new ListNode(0);
-			head_ptr = head;
-			ListNode *ptr = head_ptr->next;
-
-			head_ptr->next->next = NULL;
+			ListNode *ptr = head->next;
 
 			while (ptr != NULL) {
 				ListNode *tmp = ptr->next;
-				ptr->next = head_ptr;
-				head_ptr = ptr;
+				ptr->next = head;
+				head = ptr;
 				ptr = tmp;
 			}
 
-			return head_ptr;
+			return head;
 		}
 };
 
@@ -56,7 +52,7 @@ int main(void) {
 	srand(time(NULL));
 
 	std::cout << "before: " << std::endl;
-	for (int i = 0; i < 2; ++i) {
+	for (int i = 0; i < 5; ++i) {
 		ListNode *new_node = new ListNode(rand());
 		std::cout << new_node->val << " ";
 		ptr->next = new_node;
@@ -68,7 +64,7 @@ int main(void) {
 
 	ptr = head->next;
 	std::cout << "after: " << std::endl;
-	for (int i = 0; i < 2; ++i) {
+	for (int i = 0; i < 5; ++i) {
 		std::cout << ptr->val << " ";
 		ptr = ptr->next;
 	}
