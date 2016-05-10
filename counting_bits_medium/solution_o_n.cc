@@ -15,10 +15,19 @@ class Solution {
 		vector<int> countBits(int num) 
 		{
 			vector<int> result;
-			int count = 0;
-			int tmp = 0;
+
 			for (int i = 0; i <= num; ++i)
 			{
+				if (i = 0)
+				{
+					result.push_back(0);
+				}
+				else if (i = 1)
+				{
+					result.push_back(1);
+				}
+
+				result.push_back(result[i >> 1] + i & 1);
 			}
 
 			return result;
