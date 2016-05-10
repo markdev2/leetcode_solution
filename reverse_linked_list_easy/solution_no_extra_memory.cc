@@ -33,19 +33,19 @@ public:
 			}
 
 			ListNode *head_ptr = new ListNode(0);
-			head_ptr->next = head;
-			ListNode *ptr = head_ptr->next->next;
+			head_ptr = head;
+			ListNode *ptr = head_ptr->next;
 
 			head_ptr->next->next = NULL;
 
 			while (ptr != NULL) {
 				ListNode *tmp = ptr->next;
-				ptr->next = head_ptr->next;
-				head_ptr->next = ptr;
+				ptr->next = head_ptr;
+				head_ptr = ptr;
 				ptr = tmp;
 			}
 
-			return head_ptr->next;
+			return head_ptr;
 		}
 };
 
