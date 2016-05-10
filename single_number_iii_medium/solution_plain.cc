@@ -21,11 +21,11 @@ class Solution {
 			for (int i = 0; i < nums.size(); ++i)
 				differ ^= nums[i];
 
-			differ &= ~differ; 
+			differ &= (~(differ - 1)); 
 
 			for (int i = 0; i < nums.size(); ++i)
 			{
-				if (nums[i] & differ != 0)
+				if ((nums[i] & differ) != 0)
 					singleNum_1 ^= nums[i];
 				else
 					singleNum_2 ^= nums[i];
