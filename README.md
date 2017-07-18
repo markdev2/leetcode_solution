@@ -1,3 +1,6 @@
 # leetcode_solution
 
-- [x] add_digits_easy
+- add_digits_easy
+  >- [x] loop
+  >- [x] 01_runtime
+  >- [x] recursion
